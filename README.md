@@ -14,6 +14,8 @@ Debe contar con los siguientes programas y base de datos:
   - .NET 7
   - Base de datos SQL Server
 
+Con el archivo de nombre "API Devsu.postman_collection.json" puede importarlo a Postman y empezar a consumir el API REST.
+
 ## Advertencia
 Antes de ejecutar el proyecto debe crear la base de datos ejecutando el archivo que está en la siguiente ruta:
 
