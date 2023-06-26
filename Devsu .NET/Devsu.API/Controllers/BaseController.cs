@@ -8,7 +8,7 @@ namespace Devsu.API.Controllers
         protected ActionResult ResultResponse(Result? result = null)
         {
             result ??= new Result();
-            return StatusCode(result.Code, result);
+            return StatusCode((int)result.Code, result);
         }
     }
 }

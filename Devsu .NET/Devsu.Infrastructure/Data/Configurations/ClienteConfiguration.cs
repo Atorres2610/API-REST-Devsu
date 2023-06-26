@@ -10,7 +10,6 @@ namespace Devsu.Infrastructure.Data.Configurations
         {
             entity.HasKey(e => e.IdCliente);
 
-            entity.Property(e => e.IdCliente).ValueGeneratedNever();
             entity.Property(e => e.Contrasena)
                 .IsRequired()
                 .HasMaxLength(100)

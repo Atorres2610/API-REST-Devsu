@@ -1,25 +1,25 @@
-﻿using Devsu.Core.Contracts.Repositories;
-using Devsu.Core.Models;
+﻿using AutoMapper;
+using Devsu.Core.Contracts.Repositories;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace Devsu.Core.Features.Cliente.Queries.ListarCliente
 {
-    public class ListarClienteHandler : IRequestHandler<ListarClienteQuery, Result>
+    public class ListarClienteHandler : IRequestHandler<ListarClienteQuery, ListarClienteResponse>
     {
         private readonly IClienteRepository clienteRepository;
+        private readonly IMapper mapper;
 
-        public ListarClienteHandler(IClienteRepository clienteRepository)
+        public ListarClienteHandler(IClienteRepository clienteRepository, IMapper mapper)
         {
             this.clienteRepository = clienteRepository;
+            this.mapper = mapper;
         }
 
-        async Task<Result> IRequestHandler<ListarClienteQuery, Result>.Handle(ListarClienteQuery request, CancellationToken cancellationToken)
+        public async Task<ListarClienteResponse> Handle(ListarClienteQuery request, CancellationToken cancellationToken)
         {
             var listaClientes = await clienteRepository.Listar(c => c.Include(x => x.IdPersonaNavigation));
-            ListarClienteResponse response = new(listaClientes);
-            return new Result(StatusCodes.Status200OK, response.Clientes);
+            return mapper.Map<ListarClienteResponse>(listaClientes);
         }
     }
 }

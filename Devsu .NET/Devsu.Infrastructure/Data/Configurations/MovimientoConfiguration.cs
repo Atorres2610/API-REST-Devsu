@@ -10,7 +10,6 @@ namespace Devsu.Infrastructure.Data.Configurations
         {
             entity.HasKey(e => e.IdMovimiento);
 
-            entity.Property(e => e.IdMovimiento).ValueGeneratedNever();
             entity.Property(e => e.Fecha).HasColumnType("datetime");
             entity.Property(e => e.Saldo).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.Tipo)
@@ -18,6 +17,12 @@ namespace Devsu.Infrastructure.Data.Configurations
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.Valor).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.Limite).HasColumnType("decimal(10, 2)");
+
+            entity.HasOne(d => d.IdCuentaNavigation).WithMany(p => p.Movimiento)
+                .HasForeignKey(d => d.IdCuenta)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Movimiento_Cuenta");
         }
     }
 }

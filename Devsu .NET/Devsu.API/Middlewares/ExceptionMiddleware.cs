@@ -1,4 +1,5 @@
 ﻿using Devsu.Core.Models;
+using System.Net;
 using System.Text;
 
 namespace Devsu.API.Middlewares
@@ -20,19 +21,20 @@ namespace Devsu.API.Middlewares
             }
             catch (Exception ex)
             {
-                await EscribirResultadoExcepcion(context, ex, "Ocurrió un error inesperado");
+                string mensaje = $"Ocurrió un error inesperado: {ex.Message}";
+                string resultadoExcepcion = new Result(HttpStatusCode.InternalServerError, mensaje).ToString();
+
+                await EscribirResultadoExcepcion(context, ex, StatusCodes.Status500InternalServerError, mensaje, resultadoExcepcion);
             }
         }
 
-        private async Task EscribirResultadoExcepcion(HttpContext context, Exception exception, string mensaje)
+        private async Task EscribirResultadoExcepcion(HttpContext context, Exception ex, int statusCodes, string message, string resultException)
         {
-            logger.LogError("{Mensaje}: {Message} - {StackTrace}", mensaje, exception.Message, exception.StackTrace);
-
-            string resultExpection = new Result(StatusCodes.Status500InternalServerError, $"{mensaje}: {exception.Message}").ToString();
+            logger.LogError("{Mensaje} - {StackTrace}", message, ex.StackTrace);
 
             context.Response.ContentType = "application/json";
-            context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-            await context.Response.WriteAsync(resultExpection, Encoding.UTF8);
+            context.Response.StatusCode = statusCodes;
+            await context.Response.WriteAsync(resultException, Encoding.UTF8);
         }
     }
 }

@@ -6,8 +6,6 @@ namespace Devsu.Infrastructure.Repositories
 {
     public class CuentaRepository : GenericRepository<Cuenta>, ICuentaRepository
     {
-        public CuentaRepository(DevsuContext context) : base(context)
-        {
-        }
+        public CuentaRepository(DevsuContext context) : base(context) { }
     }
 }

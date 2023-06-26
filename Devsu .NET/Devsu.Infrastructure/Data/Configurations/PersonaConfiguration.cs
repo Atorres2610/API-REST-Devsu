@@ -10,7 +10,6 @@ namespace Devsu.Infrastructure.Data.Configurations
         {
             entity.HasKey(e => e.IdPersona);
 
-            entity.Property(e => e.IdPersona).ValueGeneratedNever();
             entity.Property(e => e.Direccion)
                 .IsRequired()
                 .HasMaxLength(250)
@@ -23,9 +22,9 @@ namespace Devsu.Infrastructure.Data.Configurations
                 .IsRequired()
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.Nombre)
+            entity.Property(e => e.Nombres)
                 .IsRequired()
-                .HasMaxLength(50)
+                .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.Telefono)
                 .IsRequired()

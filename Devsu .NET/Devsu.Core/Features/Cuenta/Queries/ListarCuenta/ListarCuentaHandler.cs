@@ -1,24 +1,24 @@
-﻿using Devsu.Core.Contracts.Repositories;
-using Devsu.Core.Models;
+﻿using AutoMapper;
+using Devsu.Core.Contracts.Repositories;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 
 namespace Devsu.Core.Features.Cuenta.Queries.ListarCuenta
 {
-    public class ListarCuentaHandler : IRequestHandler<ListarCuentaQuery, Result>
+    public class ListarCuentaHandler : IRequestHandler<ListarCuentaQuery, ListarCuentaResponse>
     {
         private readonly ICuentaRepository cuentaRepository;
+        private readonly IMapper mapper;
 
-        public ListarCuentaHandler(ICuentaRepository cuentaRepository)
+        public ListarCuentaHandler(ICuentaRepository cuentaRepository, IMapper mapper)
         {
             this.cuentaRepository = cuentaRepository;
+            this.mapper = mapper;
         }
 
-        public async Task<Result> Handle(ListarCuentaQuery request, CancellationToken cancellationToken)
+        public async Task<ListarCuentaResponse> Handle(ListarCuentaQuery request, CancellationToken cancellationToken)
         {
-            var listaCuentas = await cuentaRepository.Listar();
-            ListarCuentaResponse response = new(listaCuentas);
-            return new Result(StatusCodes.Status200OK, response);
+            var cuentas = await cuentaRepository.Listar();
+            return mapper.Map<ListarCuentaResponse>(cuentas);
         }
     }
 }

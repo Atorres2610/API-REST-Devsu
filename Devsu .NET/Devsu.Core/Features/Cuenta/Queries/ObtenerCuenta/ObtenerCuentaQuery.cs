@@ -1,7 +1,6 @@
-﻿using Devsu.Core.Models;
-using MediatR;
+﻿using MediatR;
 
 namespace Devsu.Core.Features.Cuenta.Queries.ObtenerCuenta
 {
-    public record ObtenerCuentaQuery(int IdCuenta) : IRequest<Result>;
+    public record ObtenerCuentaQuery(int IdCuenta) : IRequest<ObtenerCuentaResponse>;
 }

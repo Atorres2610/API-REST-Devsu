@@ -1,7 +1,6 @@
-﻿using Devsu.Core.Models;
-using MediatR;
+﻿using MediatR;
 
 namespace Devsu.Core.Features.Cliente.Queries.ListarCliente
 {
-    public record ListarClienteQuery() : IRequest<Result>;
+    public record ListarClienteQuery : IRequest<ListarClienteResponse>;
 }

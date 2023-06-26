@@ -2,7 +2,5 @@
 
 namespace Devsu.Core.Contracts.Repositories
 {
-    public interface ICuentaRepository : IGenericRepository<Cuenta>
-    {
-    }
+    public interface ICuentaRepository : IGenericRepository<Cuenta> { }
 }

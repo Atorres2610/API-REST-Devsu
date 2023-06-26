@@ -10,7 +10,6 @@ namespace Devsu.Infrastructure.Data.Configurations
         {
             entity.HasKey(e => e.IdCuenta);
 
-            entity.Property(e => e.IdCuenta).ValueGeneratedNever();
             entity.Property(e => e.Numero)
                 .IsRequired()
                 .HasMaxLength(50)
@@ -20,6 +19,11 @@ namespace Devsu.Infrastructure.Data.Configurations
                 .IsRequired()
                 .HasMaxLength(50)
                 .IsUnicode(false);
+
+            entity.HasOne(d => d.IdClienteNavigation).WithMany(p => p.Cuenta)
+                .HasForeignKey(d => d.IdCliente)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Cuenta_Cliente");
         }
     }
 }

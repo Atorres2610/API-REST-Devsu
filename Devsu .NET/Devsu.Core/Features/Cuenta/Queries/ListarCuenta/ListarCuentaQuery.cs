@@ -1,9 +1,6 @@
-﻿using Devsu.Core.Models;
-using MediatR;
+﻿using MediatR;
 
 namespace Devsu.Core.Features.Cuenta.Queries.ListarCuenta
 {
-    public record ListarCuentaQuery : IRequest<Result>
-    {
-    }
+    public record ListarCuentaQuery : IRequest<ListarCuentaResponse> { }
 }

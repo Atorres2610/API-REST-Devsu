@@ -1,31 +1,16 @@
-﻿namespace Devsu.Core.Features.Cliente.Queries.ListarCliente
+﻿using Devsu.Core.Models;
+
+namespace Devsu.Core.Features.Cliente.Queries.ListarCliente
 {
-    public class ListarClienteResponse
+    public class ListarClienteResponse : Result
     {
-        public List<ClienteResponse> Clientes { get; set; }
-
-        public ListarClienteResponse(List<Entities.Cliente> clientes)
-        {
-            Clientes = new();
-
-            foreach (var cliente in clientes)
-            {
-                Clientes.Add(new ClienteResponse(cliente));
-            }
-        }
+        public List<ClienteResponse> Clientes { get; set; } = new();
 
         public class ClienteResponse
         {
             public int IdCliente { get; set; }
-            public string? Cliente { get; set; }
+            public required string Cliente { get; set; }
             public bool Estado { get; set; }
-
-            public ClienteResponse(Entities.Cliente cliente)
-            {
-                IdCliente = cliente.IdCliente;
-                Cliente = cliente.IdPersonaNavigation.Nombre;
-                Estado = cliente.Estado;
-            }
         }
     }
 }
