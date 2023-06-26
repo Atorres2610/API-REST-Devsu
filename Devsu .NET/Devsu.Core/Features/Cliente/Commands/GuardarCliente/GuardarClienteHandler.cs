@@ -17,7 +17,7 @@ namespace Devsu.Core.Features.Cliente.Commands.GuardarCliente
             this.mapper = mapper;
         }
 
-        public async Task<Result> Handle(GuardarClienteCommand request, CancellationToken cancellationToken)
+        public async Task<Result> Handle(GuardarClienteCommand? request, CancellationToken cancellationToken)
         {
             if (request is not null)
             {

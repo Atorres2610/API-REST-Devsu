@@ -8,7 +8,7 @@
             Corriente
         }
 
-        internal void ELiminar()
+        public void ELiminar()
         {
             Eliminado = true;
             foreach (var movimiento in Movimiento)

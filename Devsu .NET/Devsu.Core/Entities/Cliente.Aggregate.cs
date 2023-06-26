@@ -2,7 +2,7 @@
 {
     public partial class Cliente
     {
-        internal void Eliminar()
+        public void Eliminar()
         {
             Eliminado = true;
             IdPersonaNavigation.Eliminado = true;

@@ -19,7 +19,7 @@ namespace Devsu.Core.Features.Cuenta.Commands.GuardarCuenta
             this.mapper = mapper;
         }
 
-        public async Task<Result> Handle(GuardarCuentaCommand request, CancellationToken cancellationToken)
+        public async Task<Result> Handle(GuardarCuentaCommand? request, CancellationToken cancellationToken)
         {
             if (request is not null)
             {

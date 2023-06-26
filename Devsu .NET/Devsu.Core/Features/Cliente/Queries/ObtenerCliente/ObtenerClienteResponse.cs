@@ -5,13 +5,9 @@ namespace Devsu.Core.Features.Cliente.Queries.ObtenerCliente
 {
     public class ObtenerClienteResponse : Result
     {
-        public ObtenerClienteResponse()
-        {
-        }
+        public ObtenerClienteResponse() { }
 
-        public ObtenerClienteResponse(HttpStatusCode code, string message) : base(code, message)
-        {
-        }
+        public ObtenerClienteResponse(HttpStatusCode code, string message) : base(code, message) { }
 
         public ClienteResponse? Cliente { get; set; }
 

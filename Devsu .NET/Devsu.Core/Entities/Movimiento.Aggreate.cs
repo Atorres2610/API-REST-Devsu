@@ -49,7 +49,7 @@ namespace Devsu.Core.Entities
             return string.Empty;
         }
 
-        internal void Eliminar()
+        public void Eliminar()
         {
             Eliminado = true;
         }

@@ -19,7 +19,7 @@ namespace Devsu.Core.Features.Movimiento.Commands.GuardarMovimiento
             this.mapper = mapper;
         }
 
-        public async Task<Result> Handle(GuardarMovimientoCommand request, CancellationToken cancellationToken)
+        public async Task<Result> Handle(GuardarMovimientoCommand? request, CancellationToken cancellationToken)
         {
             if (request is not null)
             {

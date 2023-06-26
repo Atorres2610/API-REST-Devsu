@@ -25,7 +25,7 @@ namespace Devsu.Core.Features.Movimiento.Queries.ObtenerMovimiento
                 return mapper.Map<ObtenerMovimientoResponse>(movimiento);
             }
 
-            return new ObtenerMovimientoResponse(HttpStatusCode.BadRequest, "No se encontró el movimiento.");
+            return new ObtenerMovimientoResponse(HttpStatusCode.NotFound, "No se encontró el movimiento.");
         }
     }
 }

@@ -3,6 +3,7 @@ using Devsu.Core.Features.Cliente.Commands.EliminarCliente;
 using Devsu.Core.Features.Cliente.Commands.GuardarCliente;
 using Devsu.Core.Features.Cliente.Queries.ListarCliente;
 using Devsu.Core.Features.Cliente.Queries.ObtenerCliente;
+using Devsu.Core.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -27,7 +28,7 @@ namespace Devsu.API.Controllers
             return ResultResponse(response);
         }
 
-        [HttpGet("{idCliente}", Name = "clienteCreado")]
+        [HttpGet("{idCliente}")]
         public async Task<ActionResult> ObtenerCliente(int idCliente)
         {
             var query = new ObtenerClienteQuery(idCliente);
@@ -52,7 +53,7 @@ namespace Devsu.API.Controllers
                 return ResultResponse(response);
             }
 
-            return ResultResponse(new Core.Models.Result(HttpStatusCode.BadRequest, "El modelo de datos o el id del cliente no es el correcto."));
+            return ResultResponse(new Result(HttpStatusCode.BadRequest, "El modelo de datos o el id del cliente no es el correcto."));
         }
 
         [HttpDelete("{idCliente}")]
