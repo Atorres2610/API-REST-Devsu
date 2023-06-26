@@ -52,7 +52,7 @@ namespace Devsu.API.Controllers
                 return ResultResponse(response);
             }
 
-            return ResultResponse(new Result(HttpStatusCode.BadRequest, "El modelo de datos es incorrecto."));
+            return ResultResponse(new Result(HttpStatusCode.BadRequest, "El modelo de datos o el id movimiento es incorrecto."));
         }
 
         [HttpDelete("{idMovimiento}")]

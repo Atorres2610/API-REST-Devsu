@@ -28,7 +28,7 @@ namespace Devsu.Core.Features.Movimiento.Commands.ActualizarMovimiento
                 if (existeCuenta)
                 {
                     movimiento.Actualizar();
-                    movimientoRepository.Actualizar(mapper.Map<Entities.Movimiento>(request));
+                    movimientoRepository.Actualizar(mapper.Map(request, movimiento));
                     await movimientoRepository.GuardarCambios();
 
                     return new Result(HttpStatusCode.OK, "¡Movimiento actualizado exitosamente!");
